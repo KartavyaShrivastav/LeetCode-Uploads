@@ -2,36 +2,50 @@
 using namespace std;
 
 class Solution {
- public:
-  vector<vector<int>> threeSum(vector<int>& nums) {
-    if (nums.size() < 3)
-      return {};
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
 
-    vector<vector<int>> ans;
+        vector<vector<int>> result;
 
-    ranges::sort(nums);
+        int numElements = nums.size();
+        for (int i = 0; i < numElements - 2 && nums[i] <= 0; ++i){
+            if (i > 0 && nums[i] == nums[i - 1]){
+                continue;
+            }
 
-    for (int i = 0; i + 2 < nums.size(); ++i) {
-      if (i > 0 && nums[i] == nums[i - 1])
-        continue;
-      int l = i + 1;
-      int r = nums.size() - 1;
-      while (l < r) {
-        const int sum = nums[i] + nums[l] + nums[r];
-        if (sum == 0) {
-          ans.push_back({nums[i], nums[l++], nums[r--]});
-          while (l < r && nums[l] == nums[l - 1])
-            ++l;
-          while (l < r && nums[r] == nums[r + 1])
-            --r;
-        } else if (sum < 0) {
-          ++l;
-        } else {
-          --r;
+            int j = i + 1, k = numElements - 1;
+
+            while (j < k)
+            {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum < 0){
+                    ++j;
+                }
+
+                else if (sum > 0)
+                {
+                    --k;
+                }
+                
+                else
+                {
+                    result.push_back({nums[i], nums[j], nums[k]});
+                    ++j;
+                    --k;
+
+                    while (j < k && nums[j] == nums[j - 1])
+                    {
+                        ++j;
+                    }
+                    while (j < k && nums[k] == nums[k + 1])
+                    {
+                        --k;
+                    }
+                }
+            }
         }
-      }
-    }
 
-    return ans;
-  }
-};
+        return result;
+    }
+    };

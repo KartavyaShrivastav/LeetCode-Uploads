@@ -1,6 +1,9 @@
+#include<bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
-    string convert(std::string s, int numRows) {
+    string convert(string s, int numRows) {
         if (numRows == 1) return s;
         string ans;
         int cycleLength = 2 * numRows - 2;
@@ -19,7 +22,6 @@ public:
                 }
             }
         }
-      
         return ans;
-  }
+    }
 };

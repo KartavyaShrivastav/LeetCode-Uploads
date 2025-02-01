@@ -36,3 +36,5 @@ public:
         return accumulate(d.begin(), d.end(), 0);
     }
 };
+
+

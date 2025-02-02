@@ -19,3 +19,5 @@ public:
         return true;
     }
 };
+
+Solved by keeping count of times when arr[i + 1] < arr[i], when it exceeds 1 return false "

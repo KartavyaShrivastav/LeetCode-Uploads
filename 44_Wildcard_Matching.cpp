@@ -26,7 +26,7 @@ public:
                 i = match;
             }
             
-            else {        
+            else {
                 return false;
             }
         }

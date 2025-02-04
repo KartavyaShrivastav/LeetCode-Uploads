@@ -3,22 +3,18 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> ans;
-        backtrack(nums, 0, ans);
-        return ans;
+    int factorial(int n){
+        return (n==1 || n==0) ? 1: n * factorial(n - 1);
     }
 
-    void backtrack(vector<int>& nums, int s, vector<vector<int>>& ans){
-        if(s == nums.size()){
+    vector<vector<int>> permute(vector<int>& nums){
+        int f = factorial(nums.size());
+        vector<vector<int>> ans;
+        for(int i=0; i<f; i++){
             ans.push_back(nums);
-            return;
+            next_permutation(nums.begin(), nums.end());
         }
 
-        for(int i=s; i<nums.size(); i++){
-            swap(nums[s], nums[i]);
-            backtrack(nums, s+1, ans);
-            swap(nums[s], nums[i]);
-        }
+        return ans;
     }
 };

@@ -4,19 +4,19 @@ using namespace std;
 class Solution {
 public:
         int maximumSum(vector<int>& nums) {
-        constexpr int kMax = 9 * 9;  // 999,999,999
-        int ans = -1;
-        vector<vector<int>> count(kMax + 1);
+            constexpr int kMax = 9 * 9;  // 999,999,999
+            int ans = -1;
+            vector<vector<int>> count(kMax + 1);
 
-        for (const int num : nums)
-        count[getDigitSum(num)].push_back(num);
+            for (const int num : nums)
+                count[getDigitSum(num)].push_back(num);
 
-        for (vector<int>& groupNums : count) {
-        if (groupNums.size() < 2)
-            continue;
-        ranges::sort(groupNums, greater<>());
-        ans = max(ans, groupNums[0] + groupNums[1]);
-        }
+            for (vector<int>& groupNums : count) {
+                if (groupNums.size() < 2)
+                    continue;
+                ranges::sort(groupNums, greater<>());
+                ans = max(ans, groupNums[0] + groupNums[1]);
+            }
 
         return ans;
     }

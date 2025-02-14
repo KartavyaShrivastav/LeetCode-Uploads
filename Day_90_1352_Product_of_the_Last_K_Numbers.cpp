@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+//Solved by pushing curr multiplication product into the array
 class ProductOfNumbers{
 public:
     vector<int> arr{1};

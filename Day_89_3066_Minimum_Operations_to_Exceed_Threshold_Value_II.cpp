@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Solved using priority queue and min heap
 class Solution {
 public:
     int minOperations(vector<int>& nums, int k) {
